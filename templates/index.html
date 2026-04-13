@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sentiment AI</title>
+    <style>
+        body { 
+            font-family: sans-serif; 
+            display: flex; 
+            justify-content: center; 
+            padding: 50px; 
+            background: #f0f2f5; 
+        }
+        .card { 
+            background: white; 
+            padding: 30px; 
+            border-radius: 15px; 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1); 
+            width: 400px; 
+        }
+        textarea { 
+            width: 100%; 
+            height: 100px; 
+            margin: 10px 0; 
+            border-radius: 8px; 
+            border: 1px solid #ccc; 
+            padding: 10px; 
+            box-sizing: border-box; 
+        }
+        button { 
+            width: 100%; 
+            padding: 10px; 
+            background: #007bff; 
+            color: white; 
+            border: none; 
+            border-radius: 8px; 
+            cursor: pointer; 
+        }
+        .result { 
+            margin-top: 20px; 
+            padding: 15px; 
+            border-radius: 8px; 
+            color: white; 
+            text-align: center; 
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h2>AI Sentiment Analysis</h2>
+        <form method="POST">
+            <textarea name="user_text" placeholder="How are you feeling today?" required></textarea>
+            <button type="submit">Analyze</button>
+        </form>
+
+        {% if result %}
+        <div class="result" style="background-color: {{ result.color }}">
+            <h3>{{ result.label }} {{ result.emoji }}</h3>
+            <p>Score: {{ result.score }} | Subj: {{ result.subj }}</p>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
